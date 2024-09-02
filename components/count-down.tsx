@@ -13,7 +13,6 @@ const CountDown = () => {
   // Function to handle setting the duration of the countdown
 
   const handleSetDuration = (): void => {
-    console.log(timeRef.current)
     if (typeof duration === "number" && duration > 0) {
       setTimeLeft(duration);
       setIsActive(false);
@@ -46,8 +45,8 @@ const CountDown = () => {
   const handleReset = (): void => {
     setIsActive(false);
     setIsPaused(false);
-    setTimeLeft(typeof duration === "number" ? duration : 0);
-
+    setTimeLeft(typeof duration === "number" ? 0 : 0);
+    setDuration("")
     if (timeRef.current) {
       clearInterval(timeRef.current);
     }
@@ -91,8 +90,8 @@ const CountDown = () => {
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen bg-gray-300/50  dark:bg-gray-900">
-        <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8 w-full max-w-md ">
-          <h1 className="text-xl font-bold text-center mb-4">
+        <div className="bg-white dark:bg-gray-800 shadow-xl rounded-lg p-8 w-full max-w-md ">
+          <h1 className="text-3xl font-bold text-center mb-6">
             Count Down Timer{" "}
           </h1>
           <div className="flex items-center mb-4 gap-2">
@@ -103,32 +102,32 @@ const CountDown = () => {
             placeholder="Enter Your Time"
 
             />
-            <Button onClick={handleSetDuration}>set</Button>
+            <Button onClick={handleSetDuration}>SET</Button>
           </div>
           <div className="text-6xl font-bold text-center dark:text-gray-950/60">
             {formatTime(timeLeft)}
           </div>
           <div className="flex items-center justify-center w-full gap-[50px] mt-2  ">
             <Button
-              className="border border-black text-medium px-3 py-2 rounded-xl"
+              className="border border-black font-medium px-3 py-2 rounded-xl hover:bg-gray-600/5 hover:font-bold"
               variant="outline"
               onClick={handleStart}
             >
-              Start
+              START
             </Button>
             <Button
-              className="border border-black text-medium px-3 py-2 rounded-xl"
+              className="border border-black font-medium px-3 py-2 rounded-xl hover:bg-gray-600/5 hover:font-bold"
               variant="outline"
               onClick={handlePaused}
             >
-              Paused
+              PAUSED
             </Button>
             <Button
-              className="border border-black text-medium px-3 py-2 rounded-xl"
+              className="border border-black font-medium px-3 py-2 rounded-xl hover:bg-gray-600/5 hover:font-bold"
               variant="outline"
               onClick={handleReset}
             >
-              Reset
+              RESET
             </Button>
           </div>
         </div>
